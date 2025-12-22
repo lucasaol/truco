@@ -1,0 +1,10 @@
+@import "tailwindcss";
+
+@theme {
+    --color-board: #244234;
+
+    --color-team-a: #4D4D4D;
+    --color-team-b: #CC3333;
+
+    --color-gold: #F4C025;
+}
