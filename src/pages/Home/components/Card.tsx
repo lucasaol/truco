@@ -1,4 +1,5 @@
-import {Minus, Plus} from "lucide-react";
+import { Minus, Plus } from "lucide-react";
+import { MIN_SCORE, WIN_SCORE } from "../../../hooks/useGame.ts";
 
 interface CardProps {
     variant: "A" | "B";
@@ -32,14 +33,14 @@ function Card(props: CardProps) {
             <div className="flex gap-3 w-full">
                 <button
                     onClick={onDecrement}
-                    disabled={score === 0}
+                    disabled={score === MIN_SCORE}
                     className="cursor-pointer flex-1 flex items-center justify-center gap-2 py-3 rounded-xl bg-black/20 text-white/80 transition-all active:scale-95 disabled:opacity-30 disabled:cursor-not-allowed"
                 >
                     <Minus size={20} />
                 </button>
                 <button
                     onClick={onIncrement}
-                    disabled={score === 12}
+                    disabled={score === WIN_SCORE}
                     className="cursor-pointer flex-1 flex items-center justify-center gap-2 py-3 rounded-xl bg-white/20 text-white transition-all active:scale-95 disabled:opacity-30 disabled:cursor-not-allowed"
                 >
                     <Plus size={20} />

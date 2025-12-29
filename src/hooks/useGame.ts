@@ -1,7 +1,8 @@
 import { useCallback, useState } from "react";
 
 const POINTS = [0, 2, 4, 6, 8, 10, 12];
-const WIN_SCORE = POINTS[POINTS.length - 1];
+export const WIN_SCORE = POINTS[POINTS.length - 1];
+export const MIN_SCORE = POINTS[0];
 
 interface Game {
     teamA: {
@@ -18,7 +19,7 @@ interface Game {
 
 export const useGame = () => {
 
-    const [game, setGame] = useState<Game>({
+    const [currentGame, setCurrentGame] = useState<Game>({
         teamA: { name: "Nós", score: 0 },
         teamB: { name: "Nós", score: 0 },
         timestamp: new Date()
@@ -35,16 +36,16 @@ export const useGame = () => {
     const getPreviousScore = (currentScore: number) => {
         const currentIndex = POINTS.indexOf(currentScore);
         if (currentIndex <= 0) {
-            return POINTS[0];
+            return MIN_SCORE;
         }
         return POINTS[currentIndex - 1];
     };
 
     const increaseScore = useCallback((team: "A" | "B") => {
-        if (game.winner) {
+        if (currentGame.winner) {
             return;
         }
-        setGame((prev) => {
+        setCurrentGame((prev) => {
             const teamKey = team === "A" ? "teamA" : "teamB";
             const newScore = getNextScore(prev[teamKey].score);
 
@@ -57,13 +58,13 @@ export const useGame = () => {
             }
             return newState;
         });
-    }, [game.winner]);
+    }, [currentGame.winner]);
 
     const decreaseScore = useCallback((team: "A" | "B") => {
-        if (game.winner) {
+        if (currentGame.winner) {
             return;
         }
-        setGame((prev) => {
+        setCurrentGame((prev) => {
             const teamKey = team === "A" ? "teamA" : "teamB";
             const newScore = getPreviousScore(prev[teamKey].score);
 
@@ -72,11 +73,11 @@ export const useGame = () => {
                 [teamKey]: { ...prev[teamKey], score: newScore },
             };
         });
-    }, [game.winner]);
+    }, [currentGame.winner]);
 
 
     const restartGame = useCallback(() => {
-        setGame((prev) => {
+        setCurrentGame((prev) => {
             return {
                 ...prev,
                 teamA: { ...prev.teamA, score: 0 },
@@ -88,7 +89,7 @@ export const useGame = () => {
 
 
     const startGame = useCallback((teamAName: string, teamBName: string) => {
-        setGame((prev) => {
+        setCurrentGame((prev) => {
             return {
                 ...prev,
                 teamA: { name: teamAName, score: 0 },
@@ -99,7 +100,7 @@ export const useGame = () => {
     }, []);
 
     return {
-        game,
+        currentGame,
         startGame,
         restartGame,
         increaseScore,

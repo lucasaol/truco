@@ -8,7 +8,7 @@ import WinnerModal from "./components/WinnerModal.tsx";
 function Home() {
 
     const {
-        game,
+        currentGame,
         startGame,
         restartGame,
         increaseScore,
@@ -25,12 +25,15 @@ function Home() {
     };
 
     useEffect(() => {
-        if (game.winner) {
-            const teamKey = game.winner === "A" ? "teamA" : "teamB";
-            setLastWinner(game[teamKey].name);
+        if (currentGame.winner) {
+            const currentWinner = (currentGame.winner === "A")
+                ? currentGame.teamA.name
+                : currentGame.teamB.name;
+
+            setLastWinner(currentWinner);
             setShowWinner(true)
         }
-    }, [game]);
+    }, [currentGame.winner, currentGame.teamA.name, currentGame.teamB.name]);
 
     const handleChangeTeams = () => {
         setShowWinner(false);
@@ -61,16 +64,16 @@ function Home() {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 flex-1">
                     <Card
                         variant="A"
-                        teamName={game.teamA.name}
-                        score={game.teamA.score}
+                        teamName={currentGame.teamA.name}
+                        score={currentGame.teamA.score}
                         onIncrement={() => {increaseScore("A")}}
                         onDecrement={() => decreaseScore("A")}
                     />
 
                     <Card
                         variant="B"
-                        teamName={game.teamB.name}
-                        score={game.teamB.score}
+                        teamName={currentGame.teamB.name}
+                        score={currentGame.teamB.score}
                         onIncrement={() => increaseScore("B")}
                         onDecrement={() => decreaseScore("B")}
                     />
