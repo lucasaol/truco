@@ -1,6 +1,6 @@
 import { LucideHistory } from "lucide-react";
 import IconButton from "../../../../components/ui/IconButton";
-import HistoryModal from "./components/HistoryModal.tsx";
+import HistoryModal from "./components/HistoryModal";
 import { useState } from "react";
 
 function History() {

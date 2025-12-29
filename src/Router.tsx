@@ -1,5 +1,5 @@
 import { Route, Routes } from "react-router-dom";
-import BaseLayout from "./layouts/BaseLayout.tsx";
+import BaseLayout from "./layouts/BaseLayout";
 import Home from "./pages/Home";
 import NotFound from "./pages/NotFound";
 

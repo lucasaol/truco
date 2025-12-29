@@ -1,4 +1,4 @@
-import Router from "./Router.tsx";
+import Router from "./Router";
 import {BrowserRouter} from "react-router-dom";
 
 function App() {

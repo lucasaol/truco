@@ -1,5 +1,5 @@
-import IconButton from "../../../../../components/ui/IconButton.tsx";
-import {LucideTrophy, Trash2, XIcon} from "lucide-react";
+import IconButton from "../../../../../components/ui/IconButton";
+import { LucideTrophy, Trash2, XIcon } from "lucide-react";
 
 interface HistoryModalProps {
     open: boolean;
