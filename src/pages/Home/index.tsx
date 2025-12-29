@@ -25,13 +25,22 @@ function Home() {
     };
 
     useEffect(() => {
+        let interval = null;
         if (currentGame.winner) {
-            const currentWinner = (currentGame.winner === "A")
-                ? currentGame.teamA.name
-                : currentGame.teamB.name;
+            interval = setInterval(() => {
+                const currentWinner = (currentGame.winner === "A")
+                    ? currentGame.teamA.name
+                    : currentGame.teamB.name;
 
-            setLastWinner(currentWinner);
-            setShowWinner(true)
+                setLastWinner(currentWinner);
+                setShowWinner(true)
+            }, 10);
+        }
+
+        return () => {
+            if (interval) {
+                clearInterval(interval);
+            }
         }
     }, [currentGame.winner, currentGame.teamA.name, currentGame.teamB.name]);
 
