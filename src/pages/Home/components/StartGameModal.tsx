@@ -33,6 +33,7 @@ function StartGameModal(props: StartGameModalProps) {
                         id="teamA"
                         label="Dupla 1"
                         placeholder="Nós"
+                        required={true}
                         handleOnChange={(value) => setTeamA(value)}
                     />
 
@@ -40,6 +41,7 @@ function StartGameModal(props: StartGameModalProps) {
                         id="teamB"
                         label="Dupla 2"
                         placeholder="Eles"
+                        required={true}
                         handleOnChange={(value) => setTeamB(value)}
                     />
                 </div>

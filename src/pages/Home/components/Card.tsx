@@ -4,10 +4,12 @@ interface CardProps {
     variant: "A" | "B";
     teamName: string;
     score: number;
+    onIncrement: () => void;
+    onDecrement: () => void;
 }
 
 function Card(props: CardProps) {
-    const { score, teamName, variant} = props;
+    const { score, teamName, variant, onIncrement, onDecrement } = props;
 
     const cardClassName = variant === "A" ? "bg-team-a" : "bg-team-b";
     return (
@@ -18,6 +20,7 @@ function Card(props: CardProps) {
             <h2 className="text-2xl md:text-3xl text-white/90 uppercase">{teamName}</h2>
 
             <button
+                onClick={onIncrement}
                 className="
                 text-white text-8xl md:text-9xl cursor-pointer
                 flex-1 flex items-center justify-center w-full
@@ -28,12 +31,16 @@ function Card(props: CardProps) {
 
             <div className="flex gap-3 w-full">
                 <button
-                    className="flex-1 flex items-center justify-center gap-2 py-3 rounded-xl bg-black/20 text-white/80 transition-all active:scale-95 disabled:opacity-30 disabled:cursor-not-allowed"
+                    onClick={onDecrement}
+                    disabled={score === 0}
+                    className="cursor-pointer flex-1 flex items-center justify-center gap-2 py-3 rounded-xl bg-black/20 text-white/80 transition-all active:scale-95 disabled:opacity-30 disabled:cursor-not-allowed"
                 >
                     <Minus size={20} />
                 </button>
                 <button
-                    className="flex-1 flex items-center justify-center gap-2 py-3 rounded-xl bg-white/20 text-white transition-all active:scale-95 disabled:opacity-30 disabled:cursor-not-allowed"
+                    onClick={onIncrement}
+                    disabled={score === 12}
+                    className="cursor-pointer flex-1 flex items-center justify-center gap-2 py-3 rounded-xl bg-white/20 text-white transition-all active:scale-95 disabled:opacity-30 disabled:cursor-not-allowed"
                 >
                     <Plus size={20} />
                 </button>
