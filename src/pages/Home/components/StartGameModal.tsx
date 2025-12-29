@@ -51,7 +51,7 @@ function StartGameModal(props: StartGameModalProps) {
                     type="submit"
                     className="bg-gold text-black cursor-pointer
                     px-6 py-3 rounded-xl font-semibold transition-all duration-200
-                    active:scale-95
+                    active:scale-95 hover:opacity-75
                     w-full flex items-center justify-center gap-2"
                 >
                     <Check size={20} />

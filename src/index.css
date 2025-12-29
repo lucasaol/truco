@@ -27,6 +27,7 @@
 
     .btn-outline-gold:hover {
         background: var(--color-gold);
+        opacity: 75%;
         color: #FFF;
     }
 }
