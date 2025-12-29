@@ -2,9 +2,30 @@
 
 @theme {
     --color-board: #244234;
+    --color-board-secondary: #244C39;
+    --color-foreground: #8AA89A;
+    --color-muted: #FCF7E8B3;
 
     --color-team-a: #4D4D4D;
     --color-team-b: #CC3333;
 
     --color-gold: #F4C025;
+
+    --color-green: #244C39;
+    --color-dark-green: #18392A;
+}
+
+@layer components {
+    .btn-outline-gold {
+        @apply px-6 py-3 rounded-xl font-semibold transition-all duration-200 cursor-pointer;
+        @apply active:scale-95 border-2;
+        border-color: var(--color-gold);
+        color: var(--color-gold);
+        background: transparent;
+    }
+
+    .btn-outline-gold:hover {
+        background: var(--color-gold);
+        color: #FFF;
+    }
 }

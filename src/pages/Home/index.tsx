@@ -1,8 +1,12 @@
+import Header from "./components/Header.tsx";
 
 function Home() {
     return (
         <>
-            <h1>Home</h1>
+            <Header />
+            <div>
+                aaaaa
+            </div>
         </>
     );
 }
