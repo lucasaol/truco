@@ -1,6 +1,6 @@
-import IconButton from "../../../../../components/ui/IconButton.tsx";
+import IconButton from "@/components/ui/IconButton";
 import { LucideTrophy, Trash2, XIcon } from "lucide-react";
-import type { Game } from "../../../../../hooks/useGame.ts";
+import type { Game } from "@/types/game";
 
 interface HistoryModalProps {
     open: boolean;
@@ -32,6 +32,14 @@ function HistoryModal(props: HistoryModalProps) {
                             const gameWinnerA = game.winner === "A";
                             const gameWinnerB = game.winner === "B";
 
+                            const formattedDate = new Date(game.timestamp).toLocaleString('pt-BR', {
+                                day: '2-digit',
+                                month: '2-digit',
+                                hour: '2-digit',
+                                minute: '2-digit',
+                                hour12: false,
+                            });
+
                             return (
                                 <article key={game.id}
                                          className="bg-board-secondary rounded-xl p-4 flex items-center gap-3">
@@ -54,13 +62,7 @@ function HistoryModal(props: HistoryModalProps) {
                                     </div>
 
                                     <div className="text-xs text-foreground whitespace-nowrap">
-                                        {game.timestamp.toLocaleString('pt-BR', {
-                                            day: '2-digit',
-                                            month: '2-digit',
-                                            hour: '2-digit',
-                                            minute: '2-digit',
-                                            hour12: false,
-                                        })}
+                                        {formattedDate}
                                     </div>
                                 </article>
                             );
