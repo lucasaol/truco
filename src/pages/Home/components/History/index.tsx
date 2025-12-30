@@ -1,15 +1,22 @@
 import { LucideHistory } from "lucide-react";
 import IconButton from "../../../../components/ui/IconButton";
-import HistoryModal from "./components/HistoryModal";
+import HistoryModal from "./components/HistoryModal.tsx";
 import { useState } from "react";
+import {useHistory} from "../../../../contexts/history-context.tsx";
 
 function History() {
     const [isOpen, setIsOpen] = useState(false);
+    const { history, clear } = useHistory();
 
     return (
         <>
-            <IconButton icon={LucideHistory} counter={6} onClick={() => setIsOpen(true)} />
-            <HistoryModal open={isOpen} onClose={() => setIsOpen(false)} />
+            <IconButton icon={LucideHistory} counter={history.length} onClick={() => setIsOpen(true)} />
+            <HistoryModal
+                open={isOpen}
+                games={history}
+                onClose={() => setIsOpen(false)}
+                onClear={clear}
+            />
         </>
     );
 }

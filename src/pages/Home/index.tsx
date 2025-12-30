@@ -4,6 +4,7 @@ import Card from "./components/Card";
 import StartGameModal from "./components/StartGameModal";
 import { useGame } from "../../hooks/useGame";
 import WinnerModal from "./components/WinnerModal.tsx";
+import {useHistory} from "../../contexts/history-context.tsx";
 
 function Home() {
 
@@ -15,9 +16,11 @@ function Home() {
         decreaseScore
     } = useGame();
 
+    const { addGame } = useHistory();
+
     const [showStartGame, setShowStartGame] = useState<boolean>(true);
     const [showWinner, setShowWinner] = useState<boolean>(false);
-    const [lastWinner, setLastWinner] = useState<string>("");
+    const [lastWinnerName, setLastWinnerName] = useState<string>("");
 
     const handleStartGame = (teamA: string, teamB: string) => {
         startGame(teamA, teamB);
@@ -27,14 +30,17 @@ function Home() {
     useEffect(() => {
         let interval = null;
         if (currentGame.winner) {
-            interval = setInterval(() => {
-                const currentWinner = (currentGame.winner === "A")
-                    ? currentGame.teamA.name
-                    : currentGame.teamB.name;
+            const currentWinner = (currentGame.winner === "A")
+                ? currentGame.teamA.name
+                : currentGame.teamB.name;
 
-                setLastWinner(currentWinner);
-                setShowWinner(true)
-            }, 10);
+            if (currentWinner !== lastWinnerName) {
+                interval = setInterval(() => {
+                    setLastWinnerName(currentWinner);
+                    setShowWinner(true);
+                    addGame(currentGame);
+                }, 10);
+            }
         }
 
         return () => {
@@ -42,18 +48,18 @@ function Home() {
                 clearInterval(interval);
             }
         }
-    }, [currentGame.winner, currentGame.teamA.name, currentGame.teamB.name]);
+    }, [addGame, currentGame, lastWinnerName]);
 
     const handleChangeTeams = () => {
         setShowWinner(false);
         setShowStartGame(true);
-        setLastWinner("");
+        setLastWinnerName("");
     };
 
     const handleRestartGame = () => {
         setShowWinner(false);
         restartGame();
-        setLastWinner("");
+        setLastWinnerName("");
     };
 
     return (
@@ -63,7 +69,7 @@ function Home() {
             {showStartGame && (<StartGameModal onSave={handleStartGame} />)}
             {showWinner && (
                 <WinnerModal
-                    winner={lastWinner}
+                    winner={lastWinnerName}
                     onRestartGame={handleRestartGame}
                     onChangeTeams={handleChangeTeams}
                 />

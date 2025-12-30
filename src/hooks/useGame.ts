@@ -4,7 +4,8 @@ const POINTS = [0, 2, 4, 6, 8, 10, 12];
 export const WIN_SCORE = POINTS[POINTS.length - 1];
 export const MIN_SCORE = POINTS[0];
 
-interface Game {
+export interface Game {
+    id: string;
     teamA: {
         name: string;
         score: number;
@@ -20,6 +21,7 @@ interface Game {
 export const useGame = () => {
 
     const [currentGame, setCurrentGame] = useState<Game>({
+        id: crypto.randomUUID(),
         teamA: { name: "Nós", score: 0 },
         teamB: { name: "Nós", score: 0 },
         timestamp: new Date()
@@ -80,6 +82,7 @@ export const useGame = () => {
         setCurrentGame((prev) => {
             return {
                 ...prev,
+                id: crypto.randomUUID(),
                 teamA: { ...prev.teamA, score: 0 },
                 teamB: { ...prev.teamB, score: 0 },
                 winner: undefined
@@ -92,6 +95,7 @@ export const useGame = () => {
         setCurrentGame((prev) => {
             return {
                 ...prev,
+                id: crypto.randomUUID(),
                 teamA: { name: teamAName, score: 0 },
                 teamB: { name: teamBName, score: 0 },
                 winner: undefined

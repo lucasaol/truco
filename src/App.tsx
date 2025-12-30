@@ -1,12 +1,15 @@
 import Router from "./Router";
 import {BrowserRouter} from "react-router-dom";
+import {HistoryProvider} from "./contexts/history-context.tsx";
 
 function App() {
   return (
     <>
-        <BrowserRouter>
-            <Router />
-        </BrowserRouter>
+        <HistoryProvider>
+            <BrowserRouter>
+                <Router />
+            </BrowserRouter>
+        </HistoryProvider>
     </>
   )
 }
