@@ -1,14 +1,14 @@
 import Router from "./Router";
-import { BrowserRouter } from "react-router-dom";
+import { HashRouter } from "react-router-dom";
 import { HistoryProvider } from "./contexts/history-context";
 
 function App() {
   return (
     <>
         <HistoryProvider>
-            <BrowserRouter basename="/truco">
+            <HashRouter>
                 <Router />
-            </BrowserRouter>
+            </HashRouter>
         </HistoryProvider>
     </>
   )
