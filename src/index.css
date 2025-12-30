@@ -1,5 +1,7 @@
 @import "tailwindcss";
 
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap');
+
 @theme {
     --color-board: #244234;
     --color-board-secondary: #244C39;
@@ -14,6 +16,17 @@
 
     --color-green: #244C39;
     --color-dark-green: #18392A;
+}
+@layer base {
+    body {
+        @apply bg-board text-foreground antialiased;
+        font-family: 'Inter', sans-serif;
+    }
+
+    h1, h2, h3 {
+        font-family: 'Bebas Neue', sans-serif;
+        letter-spacing: 0.05em;
+    }
 }
 
 @layer components {
