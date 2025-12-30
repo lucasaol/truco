@@ -6,7 +6,7 @@ function App() {
   return (
     <>
         <HistoryProvider>
-            <BrowserRouter>
+            <BrowserRouter basename="/truco">
                 <Router />
             </BrowserRouter>
         </HistoryProvider>
