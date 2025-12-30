@@ -51,6 +51,7 @@ function Home() {
     }, [addGame, currentGame, lastWinnerName]);
 
     const handleChangeTeams = () => {
+        restartGame();
         setShowWinner(false);
         setShowStartGame(true);
         setLastWinnerName("");
