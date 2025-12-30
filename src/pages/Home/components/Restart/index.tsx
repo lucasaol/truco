@@ -1,5 +1,5 @@
 import { RotateCcw } from "lucide-react";
-import IconButton from "../../../../components/ui/IconButton";
+import IconButton from "@/components/ui/IconButton";
 
 interface RestartProps {
     handleRestartGame: () => void;
@@ -8,9 +8,7 @@ interface RestartProps {
 function Restart(props: RestartProps) {
     const { handleRestartGame } = props;
     return (
-        <>
-            <IconButton icon={RotateCcw} size={24} onClick={handleRestartGame} />
-        </>
+        <IconButton icon={RotateCcw} size={24} onClick={handleRestartGame} />
     );
 }
 

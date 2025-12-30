@@ -9,7 +9,7 @@ function Header(props: HeaderProps) {
     const { onRestart } = props;
     return (
       <header className="p-4 flex items-center justify-between">
-          <h1 className="text-2xl md:text-3xl text-gold">TM</h1>
+          <h1 className="text-2xl md:text-3xl text-gold">Truco Mineiro</h1>
 
           <nav className="flex items-center gap-2">
               <History />

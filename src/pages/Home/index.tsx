@@ -2,9 +2,9 @@ import { useEffect, useState } from "react";
 import Header from "./components/Header";
 import Card from "./components/Card";
 import StartGameModal from "./components/StartGameModal";
-import { useGame } from "../../hooks/useGame";
-import WinnerModal from "./components/WinnerModal.tsx";
-import {useHistory} from "../../contexts/history-context.tsx";
+import WinnerModal from "./components/WinnerModal";
+import { useGame } from "@/hooks/useGame";
+import { useHistory } from "@/contexts/history-context";
 
 function Home() {
 

@@ -1,8 +1,8 @@
 import { LucideHistory } from "lucide-react";
-import IconButton from "../../../../components/ui/IconButton";
-import HistoryModal from "./components/HistoryModal.tsx";
+import IconButton from "@/components/ui/IconButton";
+import HistoryModal from "./components/HistoryModal";
 import { useState } from "react";
-import {useHistory} from "../../../../contexts/history-context.tsx";
+import { useHistory } from "@/contexts/history-context";
 
 function History() {
     const [isOpen, setIsOpen] = useState(false);

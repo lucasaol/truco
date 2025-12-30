@@ -1,7 +1,6 @@
-import { useState } from "react";
+import { type FormEvent, useState } from "react";
 import { Check } from "lucide-react";
-import Input from "../../../components/ui/Input";
-import * as React from "react";
+import Input from "@/components/ui/Input";
 
 interface StartGameModalProps {
     onSave: (teamA: string, teamB: string) => void;
@@ -13,7 +12,7 @@ function StartGameModal(props: StartGameModalProps) {
     const [teamA, setTeamA] = useState<string>("");
     const [teamB, setTeamB] = useState<string>("");
 
-    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         onSave(teamA, teamB);
     };

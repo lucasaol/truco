@@ -1,22 +1,10 @@
 import { useCallback, useState } from "react";
+import type { Game } from "@/types/game";
 
 const POINTS = [0, 2, 4, 6, 8, 10, 12];
 export const WIN_SCORE = POINTS[POINTS.length - 1];
 export const MIN_SCORE = POINTS[0];
 
-export interface Game {
-    id: string;
-    teamA: {
-        name: string;
-        score: number;
-    },
-    teamB: {
-        name: string;
-        score: number;
-    },
-    winner?: "A" | "B";
-    timestamp: Date;
-}
 
 export const useGame = () => {
 

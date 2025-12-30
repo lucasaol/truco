@@ -1,5 +1,5 @@
 import { Minus, Plus } from "lucide-react";
-import { MIN_SCORE, WIN_SCORE } from "../../../hooks/useGame.ts";
+import { MIN_SCORE, WIN_SCORE } from "@/hooks/useGame";
 
 interface CardProps {
     variant: "A" | "B";
